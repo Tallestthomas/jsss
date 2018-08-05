@@ -9,7 +9,7 @@ Compiled to Javascript using GWT.
 
 */
 
-const {randomIntBelow} = require("./randomInt.js");
+const {randomUIntBelow} = require("random-int-js");
 
 module.exports = (function() {
 
@@ -145,19 +145,19 @@ function FullCube_FullCube__Ljava_lang_String_2V(){
 function FullCube_randomCube(){
 	var f, i, shape, edge, corner, n_edge, n_corner, rnd, m;
 	f = new FullCube_FullCube__Ljava_lang_String_2V;
-	shape = Shape_ShapeIdx[~~(randomIntBelow(3678))];
+	shape = Shape_ShapeIdx[~~(randomUIntBelow(3678))];
 	corner = 0x01234567 << 1 | 0x11111111;
 	edge = 0x01234567 << 1;
 	n_corner = n_edge = 8;
 	for (i=0; i<24; i++) {
 		if (((shape >> i) & 1) == 0) {//edge
-			rnd = ~~(randomIntBelow(n_edge)) << 2;
+			rnd = ~~(randomUIntBelow(n_edge)) << 2;
 			FullCube_setPiece(f, 23-i, (edge >> rnd) & 0xf);
 			m = (1 << rnd) - 1;
 			edge = (edge & m) + ((edge >> 4) & ~m);
 			--n_edge;
 		} else {//corner
-			rnd = ~~(randomIntBelow(n_corner)) << 2;
+			rnd = ~~(randomUIntBelow(n_corner)) << 2;
 			FullCube_setPiece(f, 23-i, (corner >> rnd) & 0xf);
 			FullCube_setPiece(f, 22-i, (corner >> rnd) & 0xf);
 			m = (1 << rnd) - 1;
@@ -166,7 +166,7 @@ function FullCube_randomCube(){
 			++i;								
 		}
 	}
-	f.ml = ~~(randomIntBelow(2));
+	f.ml = ~~(randomUIntBelow(2));
 //	console.log(f);
 	return f;
 }

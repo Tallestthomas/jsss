@@ -1,32 +1,15 @@
-import {Inverter} from "../src/inverter"
-import {SwappableInverter} from "../src/swappable-inverter"
+import {
+  version,
+  initialize,
+  getRandomScramble
+} from "../src"
 
 import { expect } from "chai";
 
-describe("Inverter", () => {
+describe("Scramble222", () => {
   it("should invert", () => {
-    var inverter = new Inverter("R U'");
-    inverter.invert();
-    expect(inverter.getAlg()).to.equal("U R'");
-    expect(inverter.inversionCount).to.equal(1);
-    inverter.invert();
-    expect(inverter.getAlg()).to.equal("R U'");
-    expect(inverter.inversionCount).to.equal(2);
-  });
-});
-
-describe("SwappableInverter", () => {
-  it("should allow swapping without resetting count", () => {
-    var inverter = new SwappableInverter("R U'");
-    inverter.invert();
-    expect(inverter.getAlg()).to.equal("U R'");
-    expect(inverter.inversionCount).to.equal(1);
-    inverter.swap("F D");
-    expect(inverter.getAlg()).to.equal("F D");
-    expect(inverter.inversionCount).to.equal(1);
-    inverter.swap("F D");
-    inverter.invert();
-    expect(inverter.getAlg()).to.equal("D' F'");
-    expect(inverter.inversionCount).to.equal(2);
+    expect(version("222")).to.equal("2");
+    expect(initialize("222")).to.not.throw();
+    expect(getRandomScramble("222")).to.equal(3);
   });
 });

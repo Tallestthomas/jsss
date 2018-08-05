@@ -4,7 +4,7 @@
 /* Optimal modification by Michael Gottlieb (qqwref a t gmail d o t com) from Jaap's code */
 /* Version 1.0*/
 
-const {randomIntBelow} = require("./randomInt.js");
+const {randomUIntBelow} = require("random-int-js");
 
 module.exports = (function() {
 
@@ -100,7 +100,7 @@ module.exports = (function() {
     }
     var tips=["l","r","b","u"];
     for (i=0;i<4;i++) {
-     var j = randomIntBelow(3);
+     var j = randomUIntBelow(3);
      if (j < 2) {
       scramblestring[n] += tips[i] + ["","'"][j] + " ";
       picmove(4+i,1+j,n);
@@ -161,7 +161,7 @@ module.exports = (function() {
       var parity = 0;
       pcperm = [0,1,2,3,4,5];
       for (var i=0;i<4;i++) {
-       var other = i + randomIntBelow(6-i);
+       var other = i + randomUIntBelow(6-i);
        var temp = pcperm[i];
        pcperm[i] = pcperm[other];
        pcperm[other] = temp;
@@ -175,12 +175,12 @@ module.exports = (function() {
       parity=0;
       pcori = [];
       for (var i=0;i<5;i++) {
-       pcori[i] = randomIntBelow(2);
+       pcori[i] = randomUIntBelow(2);
        parity += pcori[i];
       }
       pcori[5] = parity % 2;
       for (var i=6;i<10;i++) {
-       pcori[i] = randomIntBelow(3);
+       pcori[i] = randomUIntBelow(3);
       }
    
       for(a=0;a<6;a++){

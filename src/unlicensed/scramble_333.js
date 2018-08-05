@@ -10,7 +10,7 @@ Compiled to Javascript using GWT.
 
  */
 
-const {randomIntBelow} = require("./randomInt.js");
+const {randomUIntBelow} = require("random-int-js");
 
 module.exports = (function() {
 
@@ -1377,11 +1377,11 @@ function init_0(safeStatusCallback){
 function randomCube_0(){
   var cperm, eperm;
   do {
-    eperm = randomIntBelow(479001600);
-    cperm = randomIntBelow(40320);
+    eperm = randomUIntBelow(479001600);
+    cperm = randomUIntBelow(40320);
   }
    while ((get8Parity(cperm) ^ get12Parity(eperm)) != 0);
-  return toFaceCube(new CubieCube_2(cperm, randomIntBelow(2187), eperm, randomIntBelow(2048)));
+  return toFaceCube(new CubieCube_2(cperm, randomUIntBelow(2187), eperm, randomUIntBelow(2048)));
 }
 
 var inited = false;

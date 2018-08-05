@@ -10,7 +10,7 @@ U is the regular move of the U face, according to standard cube notation.
 <br>
  */
 
-const {randomIntBelow} = require("./randomInt.js");
+const {randomUIntBelow} = require("random-int-js");
 
 module.exports = (function() {
  
@@ -57,7 +57,7 @@ module.exports = (function() {
 	var i;
 	var seq =new Array();
 	for(i=0; i<linenbr*linelen; i++){
-		seq[i]=randomIntBelow(2);
+		seq[i]=randomUIntBelow(2);
 	}
 
   	var s="",i,j;

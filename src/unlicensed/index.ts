@@ -16,14 +16,14 @@ const scramblers: {[s: string]: Scrambler} = {
   "minx": ScramblerMinx
 }
 
-export async function version(scramblerID: string): Promise<string> {
+export function syncVersion(scramblerID: string): string {
   return scramblers[scramblerID].version;
 }
 
-export async function initialize(scramblerID: string): Promise<void> {
+export function syncInitialize(scramblerID: string): void {
   return scramblers[scramblerID].initialize();
 }
 
-export async function getRandomScramble(scramblerID: string): Promise<Scramble> {
+export function syncGetRandomScramble(scramblerID: string): Scramble {
   return scramblers[scramblerID].getRandomScramble();
 }

@@ -9,9 +9,9 @@ Ported by Lucas Garron, November 23, 2011.
 
  */
 
-const {randomIntBelow} = require("./randomInt.js");
+const {randomUIntBelow} = require("random-int-js");
 
-export default (function() {
+module.exports = (function() {
 
   var posit = new Array ();
   function initbrd(){
@@ -39,7 +39,7 @@ export default (function() {
   function mix(){
       initbrd();
       for(var i=0;i<500;i++){
-          var f=Math.floor(randomIntBelow(3)+3) + 16*Math.floor(randomSource.random()*3);
+          var f=Math.floor(randomUIntBelow(3)+3) + 16*Math.floor(randomSource.random()*3);
           domove(f);
       }
   }
@@ -53,7 +53,7 @@ export default (function() {
     var perm_src = [0, 1, 2, 3, 4, 5, 6, 7];
     var perm_sel = Array(); 
     for(var i = 0; i < 7; i++){
-      var ch = randomIntBelow(7 - i);
+      var ch = randomUIntBelow(7 - i);
       ch = perm_src[ch] === fixed ? (ch + 1) % (8 - i) : ch;
       perm_sel[i >= fixed ? i + 1 : i] = perm_src[ch];
       perm_src[ch] = perm_src[7 - i];
@@ -64,7 +64,7 @@ export default (function() {
     var ori_sel = Array();
     var i = fixed === 0 ? 1 : 0;
     for(; i < 7; i = i === fixed - 1 ? i + 2 : i + 1){
-      ori_sel[i] = randomIntBelow(3);
+      ori_sel[i] = randomUIntBelow(3);
       total += ori_sel[i];
     }
     if(i <= 7) ori_sel[i] = (3 - (total % 3)) % 3;

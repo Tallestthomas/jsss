@@ -1,17 +1,18 @@
 {
-  "name": "libTemplate",
+  "name": "jsss",
+  "main": "./dist/jsss.js",
   "version": "0.0.1",
   "description": "Template for interacting with cubing JS libraries.",
   "author": "Lucas Garron <code@garron.net> (https://garron.net/)",
   "license": "MIT",
-  "repository": "github:cubing/libTemplate.js",
+  "repository": "github:cubing/jsss",
   "bugs": {
-    "url": "https://github.com/cubing/libTemplate.js/issues"
+    "url": "https://github.com/cubing/jsss/issues"
   },
-  "main": "./dist/libTemplate.js",
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "alg": "^0.9.8"
+    "alg": "^0.9.8",
+    "random-int-js": "^0.3.0"
   },
   "externalsForWebpack": [
     "alg"

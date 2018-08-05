@@ -1,4 +1,4 @@
-const {randomIntBelow} = require("./randomInt.js");
+const {randomUIntBelow} = require("random-int-js");
 
 module.exports = (function() {
   /*
@@ -40,11 +40,11 @@ module.exports = (function() {
     moves[13]=new Array(1,0,1,0,0,0,1,0,1,  -1,-1,-1,-1,-1,-1,-1,-1,-1);
   
     for( i=0; i<14; i++){
-      seq[i] = randomIntBelow(12)-5;
+      seq[i] = randomUIntBelow(12)-5;
     }
   
     for( i=0; i<4; i++){
-      pegs[i] = randomIntBelow(2);
+      pegs[i] = randomUIntBelow(2);
     }
   
     for( i=0; i<14; i++){
