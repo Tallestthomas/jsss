@@ -3,16 +3,10 @@
 /* Random-State modification by Lucas Garron (lucasg a t gmx d o t de / garron.us) in collaboration with Michael Gottlieb (mzrg.com)*/
 /* Optimal modification by Michael Gottlieb (qqwref a t gmail d o t com) from Jaap's code */
 /* Version 1.0*/
-"use strict";
-if (typeof scramblers == "undefined") {
-  var scramblers = {};
-  scramblers.lib = {
-    // https://github.com/lgarron/randomInt.js
-    randomInt: function(){function n(){var n="WARNING: randomInt is falling back to Math.random for random number generation.";console.warn?console.warn(n):console.log(n),e=!0}function o(n){if("number"!=typeof n||0>n||Math.floor(n)!==n)throw new Error("randomInt.below() not called with a positive integer value.");if(n>9007199254740992)throw new Error("Called randomInt.below() with max == "+n+", which is larger than Javascript can handle with integer precision.")}function r(n){o(n);var e=a(),i=Math.floor(t/n)*n;return i>e?e%n:r(n)}var a,t=9007199254740992,e=!1,i=window.crypto||window.msCrypto||window.cryptoUint32;if(i)a=function(){var n=2097152,o=new Uint32Array(2);return i.getRandomValues(o),o[0]*n+(o[1]>>21)};else{var l="ERROR: randomInt could not find a suitable crypto.getRandomValues() function.";console.error?console.error(l):console.log(l),a=function(){if(e)return Math.floor(Math.random()*t);throw new Error("randomInt cannot get random values.")}}return{below:r,enableInsecureMathRandomFallback:n}}()
-  }
-}
 
-scramblers["pyram"] = (function() {
+const {randomIntBelow} = require("./randomInt.js");
+
+module.exports = (function() {
 
   var numcub = 1;
 
@@ -106,7 +100,7 @@ scramblers["pyram"] = (function() {
     }
     var tips=["l","r","b","u"];
     for (i=0;i<4;i++) {
-     var j = scramblers.lib.randomInt.below(3);
+     var j = randomIntBelow(3);
      if (j < 2) {
       scramblestring[n] += tips[i] + ["","'"][j] + " ";
       picmove(4+i,1+j,n);
@@ -167,7 +161,7 @@ scramblers["pyram"] = (function() {
       var parity = 0;
       pcperm = [0,1,2,3,4,5];
       for (var i=0;i<4;i++) {
-       var other = i + scramblers.lib.randomInt.below(6-i);
+       var other = i + randomIntBelow(6-i);
        var temp = pcperm[i];
        pcperm[i] = pcperm[other];
        pcperm[other] = temp;
@@ -181,12 +175,12 @@ scramblers["pyram"] = (function() {
       parity=0;
       pcori = [];
       for (var i=0;i<5;i++) {
-       pcori[i] = scramblers.lib.randomInt.below(2);
+       pcori[i] = randomIntBelow(2);
        parity += pcori[i];
       }
       pcori[5] = parity % 2;
       for (var i=6;i<10;i++) {
-       pcori[i] = scramblers.lib.randomInt.below(3);
+       pcori[i] = randomIntBelow(3);
       }
    
       for(a=0;a<6;a++){

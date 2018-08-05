@@ -10,17 +10,9 @@ Compiled to Javascript using GWT.
 
  */
 
-"use strict";
-if (typeof scramblers === "undefined") {
-  var scramblers = {};
-  scramblers.lib = {
-    // https://github.com/lgarron/randomInt.js
-    randomInt: function(){function n(){var n="WARNING: randomInt is falling back to Math.random for random number generation.";console.warn?console.warn(n):console.log(n),e=!0}function o(n){if("number"!=typeof n||0>n||Math.floor(n)!==n)throw new Error("randomInt.below() not called with a positive integer value.");if(n>9007199254740992)throw new Error("Called randomInt.below() with max == "+n+", which is larger than Javascript can handle with integer precision.")}function r(n){o(n);var e=a(),i=Math.floor(t/n)*n;return i>e?e%n:r(n)}var a,t=9007199254740992,e=!1,i=window.crypto||window.msCrypto||window.cryptoUint32;if(i)a=function(){var n=2097152,o=new Uint32Array(2);return i.getRandomValues(o),o[0]*n+(o[1]>>21)};else{var l="ERROR: randomInt could not find a suitable crypto.getRandomValues() function.";console.error?console.error(l):console.log(l),a=function(){if(e)return Math.floor(Math.random()*t);throw new Error("randomInt cannot get random values.")}}return{below:r,enableInsecureMathRandomFallback:n}}()
-  }
-}
+const {randomIntBelow} = require("./randomInt.js");
 
-
-scramblers["333"] = (function() {
+module.exports = (function() {
 
 
 var _;
@@ -1385,11 +1377,11 @@ function init_0(safeStatusCallback){
 function randomCube_0(){
   var cperm, eperm;
   do {
-    eperm = scramblers.lib.randomInt.below(479001600);
-    cperm = scramblers.lib.randomInt.below(40320);
+    eperm = randomIntBelow(479001600);
+    cperm = randomIntBelow(40320);
   }
    while ((get8Parity(cperm) ^ get12Parity(eperm)) != 0);
-  return toFaceCube(new CubieCube_2(cperm, scramblers.lib.randomInt.below(2187), eperm, scramblers.lib.randomInt.below(2048)));
+  return toFaceCube(new CubieCube_2(cperm, randomIntBelow(2187), eperm, randomIntBelow(2048)));
 }
 
 var inited = false;
@@ -1729,18 +1721,3 @@ var Cnk, ckmv, ckmv2, cornerColor, cornerFacelet, edgeColor, edgeFacelet, fact, 
   };
 
 })();
-
-scramblers["333ft"] = scramblers["333"];
-scramblers["333bf"] = scramblers["333"];
-scramblers["333oh"] = scramblers["333"];
-scramblers["333mbf"] = scramblers["333"];
-
-
-scramblers["333fm"] = {
-  getRandomScramble() {
-    return "R' U' F " + this.prototype.getRandomScramble() + " R' U' F";
-  }
-};
-scramblers["333fm"].prototype = scramblers["333"];
-scramblers["333"];
-scramblres

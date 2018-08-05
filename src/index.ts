@@ -1,7 +1,14 @@
-import * as myWorker from "./test.worker";
-const { expensive } = (myWorker as any)() as typeof myWorker;
+import * as AsyncScrambleWorker from "./old/index.worker";
+const {
+  version,
+  getRandomScramble
+} = (AsyncScrambleWorker as any)() as typeof AsyncScrambleWorker;
+
 const f = async function() {
-  console.log(await expensive(1000));
+  for (var s of ["222", "333", "sq1", "clock", "pyram", "minx"]) {
+    console.log(await version(s));
+    console.log(await getRandomScramble(s));
+  }
 }
 
 f();
