@@ -1,7 +1,7 @@
 import {Scramble} from "./unlicensed/shared"
 import {ScrambleSource} from "./scramble-source"
 
-import * as _AsyncScrambleWorker from "./index.worker";
+import * as _AsyncScrambleWorker from "./web.worker";
 export const AsyncScrambleWorker = _AsyncScrambleWorker;
 
 // TODO: Support multiple workers?

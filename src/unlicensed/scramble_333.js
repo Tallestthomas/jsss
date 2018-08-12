@@ -12,7 +12,7 @@ Compiled to Javascript using GWT.
 
 const {randomUIntBelow} = require("random-int-js");
 
-module.exports = (function() {
+module.exports.default = (function() {
 
 
 var _;

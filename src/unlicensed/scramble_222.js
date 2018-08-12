@@ -11,7 +11,7 @@ Ported by Lucas Garron, November 23, 2011.
 
 const {randomUIntBelow} = require("random-int-js");
 
-module.exports = (function() {
+module.exports.default = (function() {
 
   var posit = new Array ();
   function initbrd(){

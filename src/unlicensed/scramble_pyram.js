@@ -6,7 +6,7 @@
 
 const {randomUIntBelow} = require("random-int-js");
 
-module.exports = (function() {
+module.exports.default = (function() {
 
   var numcub = 1;
 
